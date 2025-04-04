@@ -110,10 +110,11 @@ int number_of_moves(struct game_state start)
         if (arrays_equal(*goal_state, *current_state))
         {
             free(attempted_moves);
-            free(current_state->tiles);
-            free(goal_state->tiles); 
-        
-            return current_state->num_steps;
+            free(current_state);
+            free(goal_state); 
+            free(path_entrance);
+
+            return goal_state->num_steps; 
         }
         // check if previous state has already occurred
         // if it has then move to the next value and increment num_moves
@@ -174,8 +175,9 @@ int number_of_moves(struct game_state start)
 // free everything
 
 free(attempted_moves);
-free(current_state->tiles);
-free(goal_state->tiles); 
+free(current_state);
+free(goal_state); 
+free(path_entrance);
 
 return goal_state->num_steps; 
 }

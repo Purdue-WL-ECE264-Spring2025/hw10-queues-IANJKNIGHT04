@@ -150,6 +150,7 @@ int number_of_moves(struct game_state start)
                 if (arrays_equal(deserialize(peek_list->value), game_arr[i])== 1)
                 {
                     equal = 1;
+                    break;
                 }
                 peek_list= peek_list->next;
             } 

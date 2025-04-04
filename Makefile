@@ -12,5 +12,9 @@ clean:
 	/bin/rm -rf *.o
 	/bin/rm -rf $(APP)
 
+test%: testcases/%.txt $(APP)
+	@echo $@
+	@bash -c "diff -c "diff <(./$(APP) $<) <(echo Valid)"
+
 %.o: %.c $(HEADERS)
 	$(CC) -c $< -o $@ $(CFLAGS)

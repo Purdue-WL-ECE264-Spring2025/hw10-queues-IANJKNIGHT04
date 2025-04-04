@@ -113,7 +113,7 @@ int number_of_moves(struct game_state start)
             free(current_state);
             free_list(attempted_moves->data);
             free_list(path_entrance->data);
-            int steps = goal_state->num_steps;
+            int steps = current_state->num_steps;
             free(goal_state);
             free(attempted_moves);
             free(path_entrance);
@@ -156,7 +156,7 @@ int number_of_moves(struct game_state start)
             if(!equal)
             {
                 enqueue(path_entrance, game_arr[i]);
-                insert_at_tail(&(attempted_moves->data), serialize(*current_state));
+                insert_at_tail(&(attempted_moves->data), serialize(game_arr[i]));
                 num_states++;
             }
             

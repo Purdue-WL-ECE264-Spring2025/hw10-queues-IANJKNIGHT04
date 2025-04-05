@@ -147,12 +147,13 @@ int number_of_moves(struct game_state start)
             while(peek_list != NULL)
             {
 
-                if (arrays_equal(deserialize(peek_list->value), game_arr[i])== 1)
+                if ( peek_list->value == serialize(game_arr[i]))
                 {
                     equal = 1;
                     break;
                 }
                 peek_list= peek_list->next;
+                
             } 
             if(!equal)
             {
@@ -186,3 +187,7 @@ free(path_entrance);
 return goal_state->num_steps; 
 }
 
+// bool check_if_occurred(struct linked_list previous_visit, int val)
+// {
+    
+// }

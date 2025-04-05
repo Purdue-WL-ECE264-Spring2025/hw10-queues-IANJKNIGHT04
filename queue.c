@@ -98,13 +98,14 @@ int number_of_moves(struct game_state start)
     // struct game_state * left; 
     // struct game_state * up;
     // struct game_state * down;
+    uint64_t current_val;
 
     
 // check if the queue is empty or if the state matches the goal state
 // if not continue queueing and dequeueing 
 // increment num_states
 // add newest state to array of attempted moves
-    while (1 != arrays_equal(*goal_state, *current_state) || path_entrance->data.head != NULL)
+    while (path_entrance->data.head != NULL)
     {
 
         if (arrays_equal(*goal_state, *current_state))
@@ -144,10 +145,12 @@ int number_of_moves(struct game_state start)
         {
             peek_list = traverse_list->head;
             int equal = 0;
+            current_val = serialize(game_arr[i]);
             while(peek_list != NULL)
             {
 
-                if ( peek_list->value == serialize(game_arr[i]))
+                
+                if ( peek_list->value == current_val)
                 {
                     equal = 1;
                     break;
@@ -158,7 +161,7 @@ int number_of_moves(struct game_state start)
             if(!equal)
             {
                 enqueue(path_entrance, game_arr[i]);
-                insert_at_tail(&(attempted_moves->data), serialize(game_arr[i]));
+                insert_at_tail(&(attempted_moves->data), current_val);
                 num_states++;
             }
             

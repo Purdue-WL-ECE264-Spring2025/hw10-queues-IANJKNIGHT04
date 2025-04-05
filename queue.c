@@ -139,7 +139,7 @@ int number_of_moves(struct game_state start)
         
         struct game_state game_arr[4] = {right, left, up, down};
 
-        struct linked_list * traverse_list = &(attempted_moves->data);
+        struct linked_list * traverse_list = &(path_entrance->data);
         struct list_node * peek_list;
         for (int i = 0; i < 4; i++)
         {

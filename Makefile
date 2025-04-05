@@ -16,13 +16,13 @@ test%: testcases/%.txt $(APP)
 	@echo $@
 	@bash -c "diff -c "diff <(./$(APP) $<) <(echo Valid)"
 
-time_test: $(APP)
-    echo "test 1:  "
-    time ./hw10 testcases/1.txt
-    echo "test 2:  "
-    time ./hw10 testcases/2.txt
-    echo "test 3:  "
-    time ./hw10 testcases/3.txt
+# time_test: $(APP)
+#     echo "test 1:  "
+#     time ./hw10 testcases/1.txt
+#     echo "test 2:  "
+#     time ./hw10 testcases/2.txt
+#     echo "test 3:  "
+#     time ./hw10 testcases/3.txt
 
 %.o: %.c $(HEADERS)
 	$(CC) -c $< -o $@ $(CFLAGS)
